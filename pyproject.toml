@@ -12,6 +12,7 @@ fire = "^0.4.0"
 black = "^21.6b0"
 isort = {extras = ["colors"], version = "^5.8.0"}
 flake8 = "^3.9.2"
+coverage = "^5.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
