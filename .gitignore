@@ -3,3 +3,7 @@ __pycache__/
 
 # pyenv
 .python-version
+
+# coverage
+.coverage
+coverage.xml
