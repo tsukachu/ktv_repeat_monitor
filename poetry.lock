@@ -130,11 +130,11 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 
 [[package]]
 name = "isort"
-version = "5.8.0"
+version = "5.9.1"
 description = "A Python utility / library to sort Python imports."
 category = "dev"
 optional = false
-python-versions = ">=3.6,<4.0"
+python-versions = ">=3.6.1,<4.0"
 
 [package.dependencies]
 colorama = {version = ">=0.4.3,<0.5.0", optional = true, markers = "extra == \"colors\""}
@@ -143,6 +143,7 @@ colorama = {version = ">=0.4.3,<0.5.0", optional = true, markers = "extra == \"c
 pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
 requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
+plugins = ["setuptools"]
 
 [[package]]
 name = "mako"
@@ -243,6 +244,24 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "simple-settings"
+version = "1.0.0"
+description = "A simple way to manage your project settings"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+all = ["SQLAlchemy (==1.3.19)", "redis (==3.5.3)", "pymemcache (==3.4.0)", "consulate (==0.6.0)", "jsonpickle (==1.4.1)", "boto3 (==1.15.6)", "toml (==0.10.1)", "PyYAML (==5.3.1)", "six (==1.15.0)"]
+consul = ["consulate (==0.6.0)", "jsonpickle (==1.4.1)"]
+database = ["SQLAlchemy (==1.3.19)", "jsonpickle (==1.4.1)"]
+memcached = ["pymemcache (==3.4.0)", "six (==1.15.0)", "jsonpickle (==1.4.1)"]
+redis = ["redis (==3.5.3)", "six (==1.15.0)", "jsonpickle (==1.4.1)"]
+s3 = ["boto3 (==1.15.6)", "jsonpickle (==1.4.1)"]
+toml = ["toml (==0.10.1)"]
+yaml = ["PyYAML (==5.3.1)"]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -329,7 +348,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e7863af46955e47f398f9c839aa809b25199a0d5642668b37388721edac25fe8"
+content-hash = "bf8727c2243b357870d45d0bd5bf433daff1641e8b1474a5cc36f13739d5363d"
 
 [metadata.files]
 alembic = [
@@ -469,8 +488,8 @@ importlib-metadata = [
     {file = "importlib_metadata-4.5.0.tar.gz", hash = "sha256:b142cc1dd1342f31ff04bb7d022492b09920cb64fed867cd3ea6f80fe3ebd139"},
 ]
 isort = [
-    {file = "isort-5.8.0-py3-none-any.whl", hash = "sha256:2bb1680aad211e3c9944dbce1d4ba09a989f04e238296c87fe2139faa26d655d"},
-    {file = "isort-5.8.0.tar.gz", hash = "sha256:0a943902919f65c5684ac4e0154b1ad4fac6dcaa5d9f3426b732f1c8b5419be6"},
+    {file = "isort-5.9.1-py3-none-any.whl", hash = "sha256:8e2c107091cfec7286bc0f68a547d0ba4c094d460b732075b6fba674f1035c0c"},
+    {file = "isort-5.9.1.tar.gz", hash = "sha256:83510593e07e433b77bd5bff0f6f607dbafa06d1a89022616f02d8b699cfcd56"},
 ]
 mako = [
     {file = "Mako-1.1.4-py2.py3-none-any.whl", hash = "sha256:aea166356da44b9b830c8023cd9b557fa856bd8b4035d6de771ca027dfc5cc6e"},
@@ -596,6 +615,10 @@ regex = [
     {file = "regex-2021.4.4-cp39-cp39-win32.whl", hash = "sha256:fa4537fb4a98fe8fde99626e4681cc644bdcf2a795038533f9f711513a862ae6"},
     {file = "regex-2021.4.4-cp39-cp39-win_amd64.whl", hash = "sha256:97f29f57d5b84e73fbaf99ab3e26134e6687348e95ef6b48cfd2c06807005a07"},
     {file = "regex-2021.4.4.tar.gz", hash = "sha256:52ba3d3f9b942c49d7e4bc105bb28551c44065f139a65062ab7912bef10c9afb"},
+]
+simple-settings = [
+    {file = "simple-settings-1.0.0.tar.gz", hash = "sha256:90081f4ad59eb4698b110db6e1050970ad3556cb2db810ca8c7789c630c314e6"},
+    {file = "simple_settings-1.0.0-py2.py3-none-any.whl", hash = "sha256:50dbee8135a7c4d3339e2e8d534918240c32849eaeb0bee2ac52405576ee9d0d"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},

@@ -10,6 +10,7 @@ fire = "^0.4.0"
 SQLAlchemy = "^1.4.18"
 psycopg2 = "^2.9.1"
 alembic = "^1.6.5"
+simple-settings = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
