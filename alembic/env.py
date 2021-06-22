@@ -24,6 +24,10 @@ target_metadata = None
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+target = context.get_x_argument(as_dictionary=True).get("target", "")
+if target == "test":
+    settings.DATABASE["NAME"] = "test_" + settings.DATABASE["NAME"]
+    settings.configure(DATABASE=settings.DATABASE)
 
 sqlalchemy_url = get_url(settings.DATABASE)
 
