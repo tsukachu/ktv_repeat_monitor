@@ -11,6 +11,5 @@ format:
 
 test:
 	python main.py setup
-	poetry run coverage run -m unittest
+	poetry run pytest --cov=app --cov-report=xml
 	python main.py teardown
-	poetry run coverage xml
