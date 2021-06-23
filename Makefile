@@ -10,5 +10,7 @@ format:
 	poetry run isort .
 
 test:
+	python main.py setup
 	poetry run coverage run -m unittest
+	python main.py teardown
 	poetry run coverage xml
