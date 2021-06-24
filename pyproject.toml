@@ -12,6 +12,7 @@ psycopg2 = "^2.9.1"
 alembic = "^1.6.5"
 simple-settings = "^1.0.0"
 SQLAlchemy-Utils = "^0.37.7"
+colorlog = "^5.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
