@@ -1,6 +1,9 @@
 name: main
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-test:
@@ -48,3 +51,8 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      - uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "ktv-repeat-monitor"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
