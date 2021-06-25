@@ -15,3 +15,13 @@ terraform {
 provider "heroku" {
   # Configuration options
 }
+
+resource "heroku_app" "main" {
+  name   = "ktv-repeat-monitor"
+  region = "us"
+}
+
+resource "heroku_addon" "database" {
+  app  = heroku_app.main.name
+  plan = "heroku-postgresql:hobby-dev"
+}
