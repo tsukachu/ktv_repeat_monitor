@@ -19,6 +19,9 @@ provider "heroku" {
 resource "heroku_app" "main" {
   name   = "ktv-repeat-monitor"
   region = "us"
+  config_vars = {
+    SIMPLE_SETTINGS = "app.settings.production"
+  }
 }
 
 resource "heroku_addon" "database" {
