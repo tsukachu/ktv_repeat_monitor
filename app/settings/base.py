@@ -26,12 +26,6 @@ LOGGING = {
     "disable_existing_loggers": False,
 }
 
-DATABASE = {
-    "DIALECT": "postgresql",
-    "DRIVER": "psycopg2",
-    "USER": "",
-    "PASSWORD": "",
-    "HOST": "",
-    "PORT": "",
-    "NAME": "",
-}
+# RFC 1738
+# dialect(+driver)://username:password@host:port/database
+DATABASE_URL = ""
