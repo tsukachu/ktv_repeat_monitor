@@ -4,8 +4,8 @@ from simple_settings import settings
 from sqlalchemy import create_engine
 
 from alembic import context
-from app.database import get_url
 from app.models import OnAirSchedule
+from app.utils.database import add_prefix_to_database_name
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -29,10 +29,10 @@ target_metadata = [
 # ... etc.
 target = context.get_x_argument(as_dictionary=True).get("target", "")
 if target == "test":
-    settings.DATABASE["NAME"] = "test_" + settings.DATABASE["NAME"]
-    settings.configure(DATABASE=settings.DATABASE)
+    database_url = add_prefix_to_database_name(settings.DATABASE_URL)
+    settings.configure(DATABASE_URL=database_url)
 
-sqlalchemy_url = get_url(settings.DATABASE)
+sqlalchemy_url = settings.DATABASE_URL
 
 
 def run_migrations_offline():

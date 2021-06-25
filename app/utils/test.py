@@ -3,27 +3,30 @@ from logging import getLogger
 from simple_settings import settings
 from sqlalchemy_utils.functions import create_database, database_exists, drop_database
 
-from app.database import get_url
+from app.utils.database import add_prefix_to_database_name, get_database_name
 
 logger = getLogger(__name__)
 
-settings.DATABASE["NAME"] = "test_" + settings.DATABASE["NAME"]
-settings.configure(DATABASE=settings.DATABASE)
-
 
 def setup():
-    logger.info(f"Creating test database ('{settings.DATABASE['NAME']}') ...")
-    url = get_url(settings.DATABASE)
-    if database_exists(url):
-        logger.info(f"Database '{settings.DATABASE['NAME']}' already exists")
-        logger.info(f"Destroying old test database ('{settings.DATABASE['NAME']}') ...")
-        drop_database(url)
+    database_url = add_prefix_to_database_name(settings.DATABASE_URL)
+    settings.configure(DATABASE_URL=database_url)
 
-    create_database(url)
+    database_name = get_database_name(settings.DATABASE_URL)
+    logger.info(f"Creating test database ('{database_name}') ...")
+    if database_exists(settings.DATABASE_URL):
+        logger.info(f"Database '{database_name}' already exists")
+        logger.info(f"Destroying old test database ('{database_name}') ...")
+        drop_database(settings.DATABASE_URL)
+
+    create_database(settings.DATABASE_URL)
 
 
 def teardown():
-    logger.info(f"Destroying test database ('{settings.DATABASE['NAME']}') ...")
-    url = get_url(settings.DATABASE)
-    if database_exists(url):
-        drop_database(url)
+    database_url = add_prefix_to_database_name(settings.DATABASE_URL)
+    settings.configure(DATABASE_URL=database_url)
+
+    database_name = get_database_name(settings.DATABASE_URL)
+    logger.info(f"Destroying test database ('{database_name}') ...")
+    if database_exists(settings.DATABASE_URL):
+        drop_database(settings.DATABASE_URL)
