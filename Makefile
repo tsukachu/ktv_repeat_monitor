@@ -12,5 +12,5 @@ format:
 test:
 	poetry run python main.py setup
 	poetry run alembic -x target=test upgrade head
-	poetry run pytest --cov=app --cov-report=xml
+	poetry run pytest --cov=. --cov-report=xml
 	poetry run python main.py teardown
