@@ -2,6 +2,7 @@ import os
 
 import fire
 
+from app.scraping.main import run
 from app.utils.test import setup, teardown
 
 
@@ -16,6 +17,9 @@ class Manager:
 
     def teardown(self):
         teardown()
+
+    def scraping(self):
+        run()
 
 
 if __name__ == "__main__":

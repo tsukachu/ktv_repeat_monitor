@@ -28,3 +28,9 @@ class ManagerTests(TestCase):
         self.manager.teardown()
 
         mock_teardown.assert_called()
+
+    @patch("main.run")
+    def test_call_of_run(self, mock_run):
+        self.manager.scraping()
+
+        mock_run.assert_called()
