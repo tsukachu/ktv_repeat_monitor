@@ -15,3 +15,6 @@ def run():
     while page.has_next:
         page.pop()
         logger.debug(page.get_title())
+        schedules = page.get_schedules()
+        for schedule in schedules:
+            logger.debug(f"{schedule['on_air']}, {schedule['episode']}")

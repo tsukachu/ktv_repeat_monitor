@@ -29,4 +29,18 @@ class OnAirSchedulePage(BasePage):
         self.article = self.articles.popleft()
 
     def get_title(self):
-        return self.article.select_one(OnAirScheduleLocators.title).string
+        return self.article.select_one(OnAirScheduleLocators.title).get_text(strip=True)
+
+    def get_schedules(self):
+        schedules = self.article.select(OnAirScheduleLocators.schedule)
+        result = []
+        for schedule in schedules:
+            on_air = schedule.select_one(OnAirScheduleLocators.on_air).get_text(
+                strip=True
+            )
+            episode = schedule.select_one(OnAirScheduleLocators.episode).get_text(
+                strip=True
+            )
+            result.append({"on_air": on_air, "episode": episode})
+
+        return result
