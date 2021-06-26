@@ -17,11 +17,13 @@ LOGGING = {
             "formatter": "verbose",
         },
     },
-    "root": {
-        "level": "DEBUG",
-        "handlers": [
-            "console",
-        ],
+    "loggers": {
+        "app": {
+            "level": "DEBUG",
+            "handlers": [
+                "console",
+            ],
+        },
     },
     "disable_existing_loggers": False,
 }
