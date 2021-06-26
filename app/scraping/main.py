@@ -17,4 +17,6 @@ def run():
         logger.debug(page.get_title())
         schedules = page.get_schedules()
         for schedule in schedules:
-            logger.debug(f"{schedule['on_air']}, {schedule['episode']}")
+            logger.debug(
+                f"{schedule['start']}, {schedule['end']}, {schedule['episode']}"
+            )

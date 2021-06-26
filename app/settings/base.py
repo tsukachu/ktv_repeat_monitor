@@ -31,3 +31,5 @@ LOGGING = {
 # RFC 1738
 # dialect(+driver)://username:password@host:port/database
 DATABASE_URL = ""
+
+TIME_ZONE = "Asia/Tokyo"
