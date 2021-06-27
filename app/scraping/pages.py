@@ -67,8 +67,8 @@ class OnAirSchedulePage(BasePage):
         Returns:
           on_air は '開始時刻～終了時刻' になってるので start, end と分けて返す
 
-          start: datetime(aware) tzinfo=utc
-          end: datetime(aware) tzinfo=utc
+          start: datetime(aware)
+          end: datetime(aware)
         """
         # 再放送は午後なのでひとまず固定
         pm = {
@@ -98,8 +98,5 @@ class OnAirSchedulePage(BasePage):
         # replace で tzinfo を jst に変更すると 19 分ズレるので localize を使う
         start = jst.localize(start)  # aware, jst
         end = jst.localize(end)  # aware, jst
-
-        start = start.astimezone(pytz.utc)  # aware, utc
-        end = end.astimezone(pytz.utc)  # aware, utc
 
         return start, end
