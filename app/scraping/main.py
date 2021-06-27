@@ -2,14 +2,15 @@ from logging import getLogger
 
 import requests
 
+from app.database import session
+from app.models import OnAirSchedule
 from app.scraping.pages import OnAirSchedulePage
 
 logger = getLogger(__name__)
 
 
 def run():
-    session = requests.Session()
-    page = OnAirSchedulePage(session)
+    page = OnAirSchedulePage(requests.Session())
     page.get()
     page.parse()
     while page.has_next:
@@ -20,3 +21,12 @@ def run():
             logger.debug(
                 f"{schedule['start']}, {schedule['end']}, {schedule['episode']}"
             )
+            on_air = OnAirSchedule(
+                title=page.get_title(),
+                episode=schedule["episode"],
+                start=schedule["start"],
+                end=schedule["end"],
+            )
+            session.add(on_air)
+
+    session.commit()
