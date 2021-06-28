@@ -7,6 +7,8 @@ from sqlalchemy.types import TypeDecorator
 class DateTime(TypeDecorator):
     impl = DateTime
 
+    cache_ok = True
+
     def process_bind_param(self, value, diarect):
         return value
 
