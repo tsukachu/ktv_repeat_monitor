@@ -23,6 +23,7 @@ class OnAirSchedulePage(BasePage):
     def parse(self):
         articles = self.soup.select(OnAirScheduleLocators.article)
         self.articles = deque(articles)
+        self.contents = self.soup.select_one(OnAirScheduleLocators.contents)
 
     @property
     def has_next(self):
