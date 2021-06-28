@@ -18,7 +18,7 @@ def run():
         OnAirScheduleSourceHistory.id.desc()
     ).first()
     if latest_source and latest_source.source == page.contents.prettify():
-        logger.debug("No change from latest history")
+        logger.info("No change from latest history")
         return
     while page.has_next:
         page.pop()
@@ -37,8 +37,8 @@ def run():
                 .first()
             )
             if latest_schedule:
-                logger.debug("The Schedule for the same OnAir date already exists")
-                logger.debug("Increment the version and re-register")
+                logger.info("The Schedule for the same OnAir date already exists")
+                logger.info("Increment the version and re-register")
                 version = latest_schedule.version + 1
             else:
                 version = 1
